@@ -119,7 +119,7 @@ export default function Index() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {stockItems.map((item) => (
             <Card key={item.id} className="group bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 hover:scale-105">
-              <CardContent className="p-6">
+              <CardContent className="p-6 mx-0">
                 <div className="flex items-center justify-between mb-4">
                   <img 
                     src={item.image} 
