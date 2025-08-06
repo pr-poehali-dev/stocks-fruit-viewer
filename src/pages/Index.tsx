@@ -132,16 +132,13 @@ export default function Index() {
                 <p className="text-gray-400 text-sm mb-4">
                   {item.description}
                 </p>
-                <div className="flex items-center justify-between">
-                  <div className="text-2xl font-bold text-orange-400">
-                    {item.price}
-                  </div>
+                <div className="flex items-center justify-center">
                   <Button 
                     size="sm" 
-                    className="bg-purple-600 hover:bg-purple-700 text-white"
+                    className="bg-purple-600 hover:bg-purple-700 text-white w-full"
                   >
-                    <Icon name="ShoppingCart" className="w-4 h-4 mr-1" />
-                    Купить
+                    <Icon name="Eye" className="w-4 h-4 mr-1" />
+                    Подробнее
                   </Button>
                 </div>
               </CardContent>
