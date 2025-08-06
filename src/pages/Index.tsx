@@ -83,47 +83,30 @@ export default function Index() {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-purple-600/20"></div>
-        <div className="relative container mx-auto px-4 py-20">
+        <div className="relative container mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="flex items-center justify-center mb-8">
+            <div className="flex items-center justify-center mb-4">
               <img 
                 src="/img/095b5cb9-046b-430b-a55e-795c886f9704.jpg" 
                 alt="Blox Fruits Stock" 
-                className="w-32 h-32 rounded-full border-4 border-orange-500 shadow-2xl"
+                className="w-20 h-20 rounded-full border-4 border-orange-500 shadow-2xl"
               />
             </div>
-            <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-purple-500 mb-6">
+            <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-purple-500 mb-3">
               BLOX FRUITS
             </h1>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
               🍎 STOCK TRACKER 🍎
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Следи за ценами на самые редкие фрукты в игре! Обновления каждые 5 минут.
+            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+              Следи за ценами на самые редкие фрукты в игре!
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <Icon name="TrendingUp" className="mr-2" />
-                Проверить Сток
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white font-bold px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <Icon name="Apple" className="mr-2" />
-                Каталог Фруктов
-              </Button>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Stock Section */}
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             📈 АКТУАЛЬНЫЙ СТОК
