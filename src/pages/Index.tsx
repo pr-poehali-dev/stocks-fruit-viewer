@@ -10,7 +10,7 @@ export default function Index() {
       name: 'Dragon Fruit', 
       type: 'Mythical', 
       price: '3.5M', 
-      emoji: '🐉',
+      image: '/img/37420f48-2bc1-4e11-a094-8f40dfc6152e.jpg',
       rarity: 'mythical',
       description: 'Невероятная сила древнего дракона'
     },
@@ -19,7 +19,7 @@ export default function Index() {
       name: 'Shadow Fruit', 
       type: 'Mythical', 
       price: '2.9M', 
-      emoji: '🌑',
+      image: '/img/576b3bf4-2177-4e81-93dd-f04b6371912d.jpg',
       rarity: 'mythical',
       description: 'Контроль над тенями и темнотой'
     },
@@ -28,7 +28,7 @@ export default function Index() {
       name: 'Soul Fruit', 
       type: 'Mythical', 
       price: '3.2M', 
-      emoji: '👻',
+      image: '/img/8d8039b0-5cf8-4e84-91f9-480ea52a3564.jpg',
       rarity: 'mythical',
       description: 'Манипуляции с душами врагов'
     },
@@ -37,7 +37,7 @@ export default function Index() {
       name: 'Control Fruit', 
       type: 'Mythical', 
       price: '3.0M', 
-      emoji: '🎭',
+      image: '/img/37420f48-2bc1-4e11-a094-8f40dfc6152e.jpg',
       rarity: 'mythical',
       description: 'Телекинетический контроль'
     },
@@ -46,7 +46,7 @@ export default function Index() {
       name: 'Venom Fruit', 
       type: 'Mythical', 
       price: '3.0M', 
-      emoji: '☠️',
+      image: '/img/576b3bf4-2177-4e81-93dd-f04b6371912d.jpg',
       rarity: 'mythical',
       description: 'Смертоносные токсины'
     },
@@ -55,7 +55,7 @@ export default function Index() {
       name: 'Buddha Fruit', 
       type: 'Legendary', 
       price: '1.2M', 
-      emoji: '🧘',
+      image: '/img/8d8039b0-5cf8-4e84-91f9-480ea52a3564.jpg',
       rarity: 'legendary',
       description: 'Просветление и огромная сила'
     }
@@ -121,7 +121,11 @@ export default function Index() {
             <Card key={item.id} className="group bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 hover:scale-105">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl">{item.emoji}</div>
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-16 h-16 object-cover rounded-lg shadow-lg"
+                  />
                   <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${getRarityColor(item.rarity)} text-white text-sm font-bold`}>
                     {item.type}
                   </div>
