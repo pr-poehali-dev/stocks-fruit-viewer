@@ -1,10 +1,24 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import TradeChat from '@/components/TradeChat';
+import VipUpgrade from '@/components/VipUpgrade';
+import AdminPanel from '@/components/AdminPanel';
+import Settings from '@/components/Settings';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 export default function Index() {
+  const [isVip, setIsVip] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true); // Only you are admin
+  const [showChat, setShowChat] = useState(false);
+  const [showVipUpgrade, setShowVipUpgrade] = useState(false);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const currentUser = 'Admin_Yurik';
   // Stock items data
   const stockItems = [
+    // Mythical Fruits
     { 
       id: 1, 
       name: 'Dragon Fruit', 
@@ -34,15 +48,6 @@ export default function Index() {
     },
     { 
       id: 4, 
-      name: 'Control Fruit', 
-      type: 'Mythical', 
-      price: '3.0M', 
-      image: '/img/37420f48-2bc1-4e11-a094-8f40dfc6152e.jpg',
-      rarity: 'mythical',
-      description: 'Телекинетический контроль'
-    },
-    { 
-      id: 5, 
       name: 'Venom Fruit', 
       type: 'Mythical', 
       price: '3.0M', 
@@ -51,6 +56,17 @@ export default function Index() {
       description: 'Смертоносные токсины'
     },
     { 
+      id: 5, 
+      name: 'Phoenix Fruit', 
+      type: 'Mythical', 
+      price: '3.8M', 
+      image: '/img/435fc9ec-193e-4a7b-b5e4-3b6124ee02ed.jpg',
+      rarity: 'mythical',
+      description: 'Возрождение из пепла'
+    },
+    
+    // Legendary Fruits
+    { 
       id: 6, 
       name: 'Buddha Fruit', 
       type: 'Legendary', 
@@ -58,6 +74,62 @@ export default function Index() {
       image: '/img/8d8039b0-5cf8-4e84-91f9-480ea52a3564.jpg',
       rarity: 'legendary',
       description: 'Просветление и огромная сила'
+    },
+    { 
+      id: 7, 
+      name: 'Magma Fruit', 
+      type: 'Legendary', 
+      price: '850K', 
+      image: '/img/6f2a319f-dc89-4f26-aece-312998837e74.jpg',
+      rarity: 'legendary',
+      description: 'Расплавленная лава'
+    },
+    { 
+      id: 8, 
+      name: 'Light Fruit', 
+      type: 'Legendary', 
+      price: '650K', 
+      image: '/img/152be8e1-0bdc-4975-97be-38acee88afc7.jpg',
+      rarity: 'legendary',
+      description: 'Скорость света'
+    },
+    { 
+      id: 9, 
+      name: 'Ice Fruit', 
+      type: 'Legendary', 
+      price: '350K', 
+      image: '/img/876fb9c9-b207-4a8f-b1ad-66200fd91238.jpg',
+      rarity: 'legendary',
+      description: 'Заморозка врагов'
+    },
+    
+    // Rare Fruits
+    { 
+      id: 10, 
+      name: 'Rubber Fruit', 
+      type: 'Rare', 
+      price: '750K', 
+      image: '/img/ee757fa9-b406-4380-a7ca-929467473932.jpg',
+      rarity: 'rare',
+      description: 'Эластичное тело'
+    },
+    { 
+      id: 11, 
+      name: 'Flame Fruit', 
+      type: 'Rare', 
+      price: '250K', 
+      image: '/img/6f2a319f-dc89-4f26-aece-312998837e74.jpg',
+      rarity: 'rare',
+      description: 'Огненная сила'
+    },
+    { 
+      id: 12, 
+      name: 'Smoke Fruit', 
+      type: 'Rare', 
+      price: '100K', 
+      image: '/img/576b3bf4-2177-4e81-93dd-f04b6371912d.jpg',
+      rarity: 'rare',
+      description: 'Дымовая завеса'
     }
   ];
 
@@ -79,7 +151,28 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative">
+      {/* Animated Background */}
+      <AnimatedBackground />
+      {/* Top Navigation */}
+      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+        {isAdmin && (
+          <Button
+            onClick={() => setShowAdminPanel(true)}
+            className="bg-red-600 hover:bg-red-700 text-white shadow-lg hover:scale-105 transition-all"
+          >
+            <Icon name="Shield" size={18} className="mr-1" />
+            Админ
+          </Button>
+        )}
+        <Button
+          onClick={() => setShowSettings(true)}
+          className="bg-slate-700 hover:bg-slate-600 text-white shadow-lg hover:scale-105 transition-all"
+        >
+          <Icon name="Settings" size={18} />
+        </Button>
+      </div>
+
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-purple-600/20"></div>
@@ -89,10 +182,10 @@ export default function Index() {
               <img 
                 src="/img/095b5cb9-046b-430b-a55e-795c886f9704.jpg" 
                 alt="Blox Fruits Stock" 
-                className="w-20 h-20 rounded-full border-4 border-orange-500 shadow-2xl"
+                className="w-20 h-20 rounded-full border-4 border-orange-500 shadow-2xl animate-pulse"
               />
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-purple-500 mb-3">
+            <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-purple-500 mb-3 animate-bounce">
               BLOX FRUITS
             </h1>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -101,6 +194,27 @@ export default function Index() {
             <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
               Следи за ценами на самые редкие фрукты в игре!
             </p>
+            
+            {/* Action Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <Button
+                onClick={() => setShowChat(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-bold hover:scale-105 transition-all duration-300"
+              >
+                <Icon name="MessageSquare" size={20} className="mr-2" />
+                💬 Торговый чат
+              </Button>
+              
+              {!isVip && (
+                <Button
+                  onClick={() => setShowVipUpgrade(true)}
+                  className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black px-6 py-3 text-lg font-bold hover:scale-105 transition-all duration-300 animate-pulse"
+                >
+                  <Icon name="Crown" size={20} className="mr-2" />
+                  👑 VIP за 99₽
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -117,32 +231,46 @@ export default function Index() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-          {stockItems.map((item) => (
-            <Card key={item.id} className="group bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 hover:scale-105">
-              <CardContent className="p-6 mx-0">
-                <div className="flex items-center justify-between mb-4">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-16 h-16 object-cover rounded-lg shadow-lg"
-                  />
-                  <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${getRarityColor(item.rarity)} text-white text-sm font-bold`}>
+          {stockItems.map((item, index) => (
+            <Card 
+              key={item.id} 
+              className="group bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 hover:scale-105 animate-in fade-in zoom-in-95"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <CardContent className="p-6 mx-0 relative overflow-hidden">
+                {/* Animated background effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="relative">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-16 h-16 object-cover rounded-lg shadow-lg group-hover:scale-110 transition-transform duration-300"
+                    />
+                    {/* Glowing effect */}
+                    <div className="absolute inset-0 bg-orange-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                  </div>
+                  <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${getRarityColor(item.rarity)} text-white text-sm font-bold animate-pulse`}>
                     {item.type}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors relative z-10">
                   {item.name}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-gray-400 text-sm mb-4 relative z-10">
                   {item.description}
                 </p>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="text-2xl font-bold text-yellow-400">
+                    💰 {item.price}
+                  </div>
                   <Button 
                     size="sm" 
-                    className="bg-purple-600 hover:bg-purple-700 text-white w-full"
+                    className="bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-all"
                   >
-                    <Icon name="Eye" className="w-4 h-4 mr-1" />
-                    Подробнее
+                    <Icon name="ShoppingCart" className="w-4 h-4 mr-1" />
+                    Купить
                   </Button>
                 </div>
               </CardContent>
@@ -230,6 +358,64 @@ export default function Index() {
           </div>
         </div>
       </footer>
+      
+      {/* Modals */}
+      {showChat && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl">
+            <Button
+              onClick={() => setShowChat(false)}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 z-10"
+            >
+              <Icon name="X" size={24} />
+            </Button>
+            <TradeChat 
+              currentUser={currentUser}
+              isVip={isVip}
+              isAdmin={isAdmin}
+            />
+          </div>
+        </div>
+      )}
+
+      {showVipUpgrade && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-lg">
+            <Button
+              onClick={() => setShowVipUpgrade(false)}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 z-10"
+            >
+              <Icon name="X" size={24} />
+            </Button>
+            <VipUpgrade
+              isVip={isVip}
+              onUpgrade={() => {
+                setIsVip(true);
+                setShowVipUpgrade(false);
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {showAdminPanel && isAdmin && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-6xl">
+            <Button
+              onClick={() => setShowAdminPanel(false)}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 z-10"
+            >
+              <Icon name="X" size={24} />
+            </Button>
+            <AdminPanel isAdmin={isAdmin} />
+          </div>
+        </div>
+      )}
+
+      <Settings 
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
     </div>
   );
 }
