@@ -47,6 +47,28 @@ export default function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* One Piece Background Images */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url(/img/e1d54faa-d9cb-442a-9adf-eb299330c2a9.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+      
+      {/* Floating islands overlay */}
+      <div 
+        className="absolute top-0 right-0 w-1/3 h-1/2 opacity-15 animate-pulse"
+        style={{
+          backgroundImage: 'url(/img/8c3a98cc-429b-4f1e-934b-bf2943d19a6d.jpg)',
+          backgroundSize: 'contain',
+          backgroundPosition: 'top right',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+
       {fruits.map((fruit) => (
         <div
           key={fruit.id}
@@ -62,17 +84,16 @@ export default function AnimatedBackground() {
         </div>
       ))}
       
-      {/* Pirate ship floating */}
-      <div className="absolute bottom-10 animate-bounce opacity-30">
-        <div className="text-6xl">🚢</div>
+      {/* Animated elements */}
+      <div className="absolute bottom-20 left-10 animate-bounce opacity-20" style={{ animationDelay: '0.5s' }}>
+        <div className="text-4xl">🚢</div>
       </div>
       
-      {/* Floating islands */}
-      <div className="absolute top-20 right-20 animate-pulse opacity-20">
-        <div className="text-8xl">🏝️</div>
+      <div className="absolute top-1/3 right-10 animate-pulse opacity-25">
+        <div className="text-5xl">🏝️</div>
       </div>
       
-      <div className="absolute top-40 left-20 animate-bounce opacity-20" style={{ animationDelay: '1s' }}>
+      <div className="absolute bottom-32 right-1/4 animate-bounce opacity-15" style={{ animationDelay: '2s' }}>
         <div className="text-6xl">⛵</div>
       </div>
       
