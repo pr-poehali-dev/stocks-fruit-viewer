@@ -78,7 +78,11 @@ export default function AnimatedBackground() {
       
       {/* Sea waves effect */}
       <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-blue-900/20 to-transparent">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 20\"%3E%3Cpath d=\"M0 10c10-5 20-5 30 0s20 5 30 0 20-5 30 0 10 5 10 5v10H0z\" fill=\"%23ffffff\" fill-opacity=\"0.05\"/%3E%3C/svg%3E')] animate-pulse" />
+        <div className="absolute inset-0 animate-pulse opacity-20">
+          <svg className="w-full h-full" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 10c10-5 20-5 30 0s20 5 30 0 20-5 30 0s10 5 10 5v10H0z" fill="#ffffff" fillOpacity="0.1"/>
+          </svg>
+        </div>
       </div>
     </div>
   );
