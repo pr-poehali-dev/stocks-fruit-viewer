@@ -7,7 +7,8 @@ import VipUpgrade from '@/components/VipUpgrade';
 import AdminPanel from '@/components/AdminPanel';
 import Settings from '@/components/Settings';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import { bloxFruitsStock, mirageStock } from '@/data/bloxFruitsData';
+import { bloxFruitsStock } from '@/data/bloxFruitsData';
+import { useMirageTimer } from '@/hooks/useMirageTimer';
 
 export default function Index() {
   const [isVip, setIsVip] = useState(false);
@@ -18,16 +19,9 @@ export default function Index() {
   const [showSettings, setShowSettings] = useState(false);
   const [activeTab, setActiveTab] = useState('stock');
   const currentUser = 'Admin_Yurik';
+  const mirageStock = useMirageTimer();
 
-  // Fruit images mapping
-  const fruitImages: { [key: string]: string } = {
-    'kitsune': '/img/04d1ce5a-f48e-416d-8290-0fa8f6e6419f.jpg',
-    'trex': '/img/17643bcd-b1cf-46be-9bb7-bc7fcf65a58e.jpg',
-    'leopard': '/img/eb13852e-9923-4e13-acde-1bcd37107509.jpg',
-    'dragon': '/img/9772806e-48db-4bbd-a2eb-43b90d3e3020.jpg',
-    'buddha': '/img/5096a899-5265-4383-a0fd-c99e8b25753f.jpg',
-    'phoenix': '/img/5ca0fffd-bd67-4b56-b868-40292d69599f.jpg',
-  };
+
 
   const getRarityColor = (rarity: string) => {
     switch(rarity) {
@@ -143,40 +137,38 @@ export default function Index() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {bloxFruitsStock.map((fruit) => (
                   <Card key={fruit.id} className="group bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:shadow-xl hover:scale-105">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-3">
+                    <CardContent className="p-2 sm:p-3">
+                      <div className="flex flex-col items-center text-center">
                         <img 
-                          src={fruitImages[fruit.image] || '/api/placeholder/60/60'} 
+                          src={fruit.image} 
                           alt={fruit.name}
-                          className="w-12 h-12 object-cover rounded-lg"
+                          className="w-8 h-8 sm:w-10 sm:h-10 object-cover rounded-lg mb-2"
                         />
-                        <div className={`px-2 py-1 rounded-full bg-gradient-to-r ${getRarityColor(fruit.rarity)} text-white text-xs font-bold`}>
+                        
+                        <div className={`px-1 sm:px-2 py-0.5 sm:py-1 rounded-full bg-gradient-to-r ${getRarityColor(fruit.rarity)} text-white text-xs font-bold mb-2`}>
                           {fruit.type}
                         </div>
-                      </div>
-                      
-                      <h3 className="text-lg font-bold text-white mb-1">
-                        {fruit.name}
-                      </h3>
-                      
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                        {fruit.description}
-                      </p>
-                      
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="text-yellow-400 font-bold">💰 {fruit.price}</span>
-                          <span className="text-blue-400 font-bold">💎 {fruit.robux}</span>
-                        </div>
                         
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-300 text-sm">Stock:</span>
-                          <span className={`font-bold ${getStockColor(fruit.stock)}`}>
-                            {fruit.stock}
-                          </span>
+                        <h3 className="text-sm sm:text-base font-bold text-white mb-1 truncate w-full">
+                          {fruit.name}
+                        </h3>
+                        
+                        <div className="space-y-1 w-full text-xs sm:text-sm">
+                          <div className="flex justify-between items-center">
+                            <span className="text-yellow-400 font-bold truncate">💰 {fruit.price}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-blue-400 font-bold truncate">💎 {fruit.robux}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-300">Stock:</span>
+                            <span className={`font-bold ${getStockColor(fruit.stock)}`}>
+                              {fruit.stock}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -194,7 +186,7 @@ export default function Index() {
                   ✨ Mirage Island Stock
                 </h1>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Редкие фрукты на острове Мираж. Появляются каждые 30 минут 🏝️
+                  Редкие фрукты на острове Мираж. Обновление каждые 2 часа 🏝️
                 </p>
               </div>
 

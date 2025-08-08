@@ -1,5 +1,5 @@
 export const bloxFruitsStock = [
-  // MYTHICAL FRUITS
+  // MYTHICAL FRUITS (по скриншоту)
   {
     id: 1,
     name: "Kitsune",
@@ -8,7 +8,7 @@ export const bloxFruitsStock = [
     price: "8,000,000",
     robux: "4,000",
     stock: 2,
-    image: "kitsune",
+    image: "/img/edfbf63b-9765-4331-a602-cad9eeb931fb.jpg",
     description: "Лисий фрукт с огненными способностями и трансформацией"
   },
   {
@@ -30,7 +30,7 @@ export const bloxFruitsStock = [
     price: "5,000,000",
     robux: "3,000",
     stock: 3,
-    image: "leopard",
+    image: "/img/1cfde898-d1f9-4779-bde3-7f6cb3e2ac66.jpg",
     description: "Самый быстрый фрукт с смертельными атаками"
   },
   {
@@ -41,7 +41,7 @@ export const bloxFruitsStock = [
     price: "3,500,000",
     robux: "2,600",
     stock: 5,
-    image: "dragon",
+    image: "/img/96c0739d-4e02-4671-ae36-bbdca0776d3d.jpg",
     description: "Король всех фруктов с огненным дыханием"
   },
   {
@@ -52,7 +52,7 @@ export const bloxFruitsStock = [
     price: "3,400,000",
     robux: "2,550",
     stock: 4,
-    image: "spirit",
+    image: "/img/9020fea5-2674-4d93-a3c0-4adfc16ed6d9.jpg",
     description: "Призрачная мощь и контроль над духами"
   },
   {
@@ -63,7 +63,7 @@ export const bloxFruitsStock = [
     price: "3,200,000",
     robux: "2,400",
     stock: 7,
-    image: "control",
+    image: "/img/96e41bcc-e217-489d-98b6-c069b6bb16fd.jpg",
     description: "Гравитационное доминирование и левитация"
   },
   {
@@ -85,7 +85,7 @@ export const bloxFruitsStock = [
     price: "3,000,000",
     robux: "2,250",
     stock: 8,
-    image: "venom",
+    image: "/img/04cd3fb8-0bc1-4c79-9790-84e091142bd7.jpg",
     description: "Смертельный яд и токсичные атаки"
   },
   {
